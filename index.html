@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 MLB Season Calendar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .card-header {
+            background: #f8fafc;
+            padding: 20px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .event {
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 4px solid;
+        }
+
+        .event:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .event.special {
+            background: #ebf8ff;
+            border-left-color: #3182ce;
+        }
+
+        .event.major {
+            background: #f0fff4;
+            border-left-color: #38a169;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .event-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+        }
+
+        .event-date {
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+
+        .event-description {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+
+        .event.active .event-description {
+            display: block;
+        }
+
+        .legend {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .legend p {
+            font-size: 0.875rem;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            font-size: 0.875rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.special {
+            background: #3182ce;
+        }
+
+        .legend-dot.major {
+            background: #38a169;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">
+                <i data-feather="calendar"></i>
+                2025 MLB Season Schedule
+            </h1>
+        </div>
+        <div class="card-content">
+            <div class="event special">
+                <div class="event-header">
+                    <div>
+                        <h3 class="event-title">Opening Series in Tokyo</h3>
+                        <p class="event-date">March 18-19</p>
+                    </div>
+                    <i data-feather="info"></i>
+                </div>
+                <div class="event-description">
+                    Special two-game series between Los Angeles Dodgers and Chicago Cubs in Tokyo, Japan
+                </div>
+            </div>
+
+            <div class="event major">
+                <div class="event-header">
+                    <div>
+                        <h3 class="event-title">Regular Season Opening Day</h3>
+                        <p class="event-date">March 27</p>
+                    </div>
+                    <i data-feather="info"></i>
+                </div>
+                <div class="event-description">
+                    Official start of the regular MLB season
+                </div>
+            </div>
+
+            <div class="event major">
+                <div class="event-header">
+                    <div>
+                        <h3 class="event-title">Regular Season Ends</h3>
+                        <p class="event-date">September 28</p>
+                    </div>
+                    <i data-feather="info"></i>
+                </div>
+                <div class="event-description">
+                    Final day of the regular season games
+                </div>
+            </div>
+
+            <div class="legend">
+                <p>Click on any event to see more details. Key dates for the 2025 MLB season:</p>
+                <div class="legend-item">
+                    <div class="legend-dot special"></div>
+                    Special Events
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot major"></div>
+                    Major Season Dates
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Add click event listeners to all events
+        document.querySelectorAll('.event').forEach(event => {
+            event.addEventListener('click', () => {
+                // Remove active class from all other events
+                document.querySelectorAll('.event').forEach(e => {
+                    if (e !== event) {
+                        e.classList.remove('active');
+                    }
+                });
+                // Toggle active class on clicked event
+                event.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
